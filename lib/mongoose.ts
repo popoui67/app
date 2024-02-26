@@ -1,5 +1,6 @@
 import mongoose, { Schema , model } from "mongoose";
  export interface Iuser {
+   clerkId? :string
     _id ?: string
     username : string
     image? :string
@@ -10,7 +11,7 @@ username :{type :String , required :true , unique :true} ,
 image :{type :String } ,
 email :{type :String}
 })
-export const UserModel  = mongoose.models.newusers ||model<Iuser>("newusers" , UserShema)
+export const UserModel  = mongoose.models.producdmern ||model<Iuser>("producdmern" , UserShema)
 
 
 export interface IProduct {
@@ -28,11 +29,10 @@ const Product = new Schema<IProduct>({
    imageUrl : {type :String  , required: true  }  ,
    stockQuantity : {type :Number  , required: true ,min :[0,""] }
 })
-export const ProductModel = model<IProduct>("productmern" , Product)
 export const  Connection = async ()=>{
     try{
     
-    await mongoose.connect('mongodb+srv://huhutech:yuyupopoyuyu@cluster0.euukfd7.mongodb.net/popo?retryWrites=true&w=majority')
+    await mongoose.connect(process.env.MONGODB_URL_CONNECTION!)
     return console.log("suc COnnetc")
     }
     catch(err){

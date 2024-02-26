@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Nav , Footer , Header } from "./components/header . footer  Nav ";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -16,12 +15,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
-    <html lang="en">
-      <body>
-  {children}
-        </body>
-    </html>
-  </ClerkProvider>
+<div className=" flex flex-centre items-centre justify-center ">
+{children}
+</div>
+      
   );
 }
